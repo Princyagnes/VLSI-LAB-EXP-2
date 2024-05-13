@@ -1,60 +1,240 @@
-SIMULATION AND IMPLEMENTATION OF  COMBINATIONAL LOGIC CIRCUITS
+# SIMULATION AND IMPLEMENTATION OF  COMBINATIONAL LOGIC CIRCUITS
 
-AIM: 
- To simulate and synthesis ENCODER, DECODER, MULTIPLEXER, DEMULTIPLEXER, MAGNITUDE COMPARATOR using Xilinx ISE.
+# AIM: 
+ To simulate and synthesis ENCODER, DECODER, MULTIPLEXER, DEMULTIPLEXER, MAGNITUDE COMPARATOR using vivado.
 
-APPARATUS REQUIRED:
-Xilinx 14.7
-Spartan6 FPGA
+# APPARATUS REQUIRED:
+vivado 2023.1
+
+# PROCEDURE:
+
+STEP:1 Start the vivado software, Select and Name the New project.
+
+STEP:2 Select the device family, device, package and speed.
+
+STEP:3 Select new source in the New Project and select Verilog Module as the Source type.
+
+STEP:4 Type the File Name and module name and Click Next and then finish button. Type the code and save it.
+
+STEP:5 Select the run simulation and then run Behavioral Simulation in the Source Window and click the check syntax.
+
+STEP:6 Click the simulation to simulate the program and give the inputs and verify the outputs as per the truth table.
+
+STEP:7 compare the output with truth table.
 
 **LOGIC DIAGRAM**
 
-ENCODER
+# ENCODER:
 
 ![image](https://github.com/navaneethans/VLSI-LAB-EXP-2/assets/6987778/3cd1f95e-7531-4cad-9154-fdd397ac439e)
 
 
-DECODER
+# DECODER:
 
 ![image](https://github.com/navaneethans/VLSI-LAB-EXP-2/assets/6987778/45a5e6cf-bbe0-4fd5-ac84-e5ad4477483b)
 
 
-MULTIPLEXER
+# MULTIPLEXER:
 
 ![image](https://github.com/navaneethans/VLSI-LAB-EXP-2/assets/6987778/427f75b2-8e67-44b9-ac45-a66651787436)
 
 
-DEMULTIPLEXER
+# DEMULTIPLEXER:
 
 ![image](https://github.com/navaneethans/VLSI-LAB-EXP-2/assets/6987778/1c45a7fc-08ac-4f76-87f2-c084e7150557)
 
 
-MAGNITUDE COMPARATOR
+# MAGNITUDE COMPARATOR:
 
 ![image](https://github.com/navaneethans/VLSI-LAB-EXP-2/assets/6987778/b2fe7a05-6bf7-4dcb-8f5d-28abbf7ea8c2)
 
 
-  
-PROCEDURE:
-STEP:1  Start  the Xilinx navigator, Select and Name the New project.
-STEP:2  Select the device family, device, package and speed.       
-STEP:3  Select new source in the New Project and select Verilog Module as the Source type.                       
-STEP:4  Type the File Name and Click Next and then finish button. Type the code and save it.
-STEP:5  Select the Behavioral Simulation in the Source Window and click the check syntax.                       
-STEP:6  Click the simulation to simulate the program and  give the inputs and verify the outputs as per the truth table.               
-STEP:7  Select the Implementation in the Sources Window and select the required file in the Processes Window.
-STEP:8  Select Check Syntax from the Synthesize  XST Process. Double Click in the  FloorplanArea/IO/Logic-Post Synthesis process in the User Constraints process group. UCF(User constraint File) is obtained. 
-STEP:9  In the Design Object List Window, enter the pin location for each pin in the Loc column Select save from the File menu.
-STEP:10 Double click on the Implement Design and double click on the Generate Programming File to create a bitstream of the design.(.v) file is converted into .bit file here.
-STEP:11  On the board, by giving required input, the LEDs starts to glow light, indicating the output.
+# VERILOG CODE
 
-VERILOG CODE
+# ENCODER:
 
-   <<< TYPE YOUR VERILOG CODE >>>
+module encoder(d,a,b,c);
 
-OUTPUT WAVEFORM
- <<< PASTE YOUR OUTPUT WAVEFORM >>>
+input [7:0]d;
 
-RESULT
+output a,b,c;
 
+or g1(a,d[4],d[5],d[6],d[7]);
+
+or g2(b,d[2],d[3],d[6],d[7]);
+
+or g3(c,d[1],d[3],d[5],d[7]);
+
+endmodule
+
+
+# DECODER:
+
+module decoder3to8(d,a);
+
+input [2:0]a;
+
+output [7:0]d;
+
+wire w0,w1,w2;
+
+not g0(w0,a[0]), g1(w1,a[1]), g2(w2,a[2]);
+
+and g3(d[0],w0,w1,w2), g4(d[1],w2,w1,a[0]), g5(d[2],w2,a[1],w0), g6(d[3],w2,a[1],a[0]), g7(d[4],a[2],w1,w0), g8(d[5],a[2],w1,a[0]), g9(d[6],w0,a[1],a[2]), g10(d[7],a[0],a[1],a[2]);
+
+endmodule
+
+# MULTIPLEXER:
+
+module Mux8_1(i,s,y);
+
+input [7:0]i;
+
+input [2:0]s;
+
+output reg y;
+
+always@(*)
+
+begin
+
+case({s[2],s[1],s[0]})
+
+3'b000:y=i[0];
+
+3'b001:y=i[1];
+
+3'b010:y=i[2];
+
+3'b011:y=i[3];
+
+3'b100:y=i[4];
+
+3'b101:y=i[5];
+
+3'b110:y=i[6];
+
+3'b111:y=i[7];
+
+endcase
+
+end
+
+
+# DEMULTIPLEXER:
+
+module Demux1to8(d1,d2,d3,d4,d5,d6,d7,d8,i,s0,s1,s2);
+i
+nput i,s0,s1,s2;
+
+output d1,d2,d3,d4,d5,d6,d7,d8;
+
+wire w1,w2,w3;
+
+not g1(w1,s0);
+
+not g2(w2,s1);
+
+not g3(w3,s2);
+
+and g4(d1,w1,w2,w3,i);
+
+and g5(d2,w1,w2,s2,i);
+
+and g6(d3,w1,s1,w3,i);
+
+and g7(d4,w1,s1,s2,i);
+
+and g8(d5,s0,w2,w3,i);
+
+and g9(d6,s0,w2,s2,i);
+
+and g10(d7,s0,s1,w3,i);
+
+and g11(d8,s0,s1,s2,i);
+
+endmodule
+
+
+# MAGNETIC COMPARATOR:
+
+module Magcom(a,b,gt,it,eq);
+
+input [3:0]a,b;
+
+output reg gt,it,eq;
+
+always @(a,b)
+
+begin
+
+if(a>b)
+
+begin
+
+gt = 1'b1;
+
+it = 1'b0;
+
+eq = 1'b0;
+
+end
+
+else if(a<b)
+
+begin
+
+gt = 1'b0;
+
+it = 1'b1;
+
+eq = 1'b0;
+
+end
+
+else
+
+begin
+
+gt =  1'b0;
+
+it = 1'b0;
+
+eq = 1'b1;
+
+end
+
+end
+
+endmodule
+
+
+# OUTPUT WAVEFORM:
+
+# ENCODER:
+
+
+# DECODER:
+
+![decoder3to8](https://github.com/Princyagnes/VLSI-LAB-EXP-2/assets/115100663/ff16c02e-6113-46c3-b6fe-5073675c5e3e)
+
+
+# MULTIPLEXER:
+
+![mux8to1](https://github.com/Princyagnes/VLSI-LAB-EXP-2/assets/115100663/0b872cd4-6c2b-4b61-a8ad-3c293aee4c1c)
+
+
+# DEMULTIPLEXER:
+
+![demux](https://github.com/Princyagnes/VLSI-LAB-EXP-2/assets/115100663/f166c999-b50b-4d6b-9a1c-77cd1bc26caa)
+
+
+# MAGNETIC COMPARATOR:
+
+![magcom](https://github.com/Princyagnes/VLSI-LAB-EXP-2/assets/115100663/358bb62a-1aa6-488d-bcda-07192ac1d288)
+
+
+# RESULT:
+
+Thus the simulation and synthesis of ENCODER, DECODER, MULTIPLEXER, DEMULTIPLEXER, 2bit MAGNITUDE COMPARATOR using vivado is successfully completed and executed.
 
