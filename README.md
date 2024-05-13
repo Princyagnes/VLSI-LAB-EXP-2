@@ -213,6 +213,8 @@ endmodule
 
 # ENCODER:
 
+![encoder](https://github.com/Princyagnes/VLSI-LAB-EXP-2/assets/115100663/cc2d90ae-6133-4d50-b2d8-c25351d50051)
+
 
 # DECODER:
 
