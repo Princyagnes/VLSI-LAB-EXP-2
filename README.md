@@ -120,12 +120,14 @@ endcase
 
 end
 
+endmodule
+
 
 # DEMULTIPLEXER:
 
 module Demux1to8(d1,d2,d3,d4,d5,d6,d7,d8,i,s0,s1,s2);
-i
-nput i,s0,s1,s2;
+
+input i,s0,s1,s2;
 
 output d1,d2,d3,d4,d5,d6,d7,d8;
 
