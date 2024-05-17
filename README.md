@@ -28,30 +28,7 @@ STEP:7 compare the output with truth table.
 
 ![image](https://github.com/navaneethans/VLSI-LAB-EXP-2/assets/6987778/3cd1f95e-7531-4cad-9154-fdd397ac439e)
 
-
-# DECODER:
-
-![image](https://github.com/navaneethans/VLSI-LAB-EXP-2/assets/6987778/45a5e6cf-bbe0-4fd5-ac84-e5ad4477483b)
-
-
-# MULTIPLEXER:
-
-![image](https://github.com/navaneethans/VLSI-LAB-EXP-2/assets/6987778/427f75b2-8e67-44b9-ac45-a66651787436)
-
-
-# DEMULTIPLEXER:
-
-![image](https://github.com/navaneethans/VLSI-LAB-EXP-2/assets/6987778/1c45a7fc-08ac-4f76-87f2-c084e7150557)
-
-
-# MAGNITUDE COMPARATOR:
-
-![image](https://github.com/navaneethans/VLSI-LAB-EXP-2/assets/6987778/b2fe7a05-6bf7-4dcb-8f5d-28abbf7ea8c2)
-
-
-# VERILOG CODE
-
-# ENCODER:
+# Verilog code:
 
 module encoder(d,a,b,c);
 
@@ -67,8 +44,15 @@ or g3(c,d[1],d[3],d[5],d[7]);
 
 endmodule
 
+# Output:
+
+![encoder](https://github.com/Princyagnes/VLSI-LAB-EXP-2/assets/115100663/cc2d90ae-6133-4d50-b2d8-c25351d50051)
 
 # DECODER:
+
+![image](https://github.com/navaneethans/VLSI-LAB-EXP-2/assets/6987778/45a5e6cf-bbe0-4fd5-ac84-e5ad4477483b)
+
+# Verilog code:
 
 module decoder3to8(d,a);
 
@@ -84,7 +68,16 @@ and g3(d[0],w0,w1,w2), g4(d[1],w2,w1,a[0]), g5(d[2],w2,a[1],w0), g6(d[3],w2,a[1]
 
 endmodule
 
+# Output:
+
+![decoder3to8](https://github.com/Princyagnes/VLSI-LAB-EXP-2/assets/115100663/ff16c02e-6113-46c3-b6fe-5073675c5e3e)
+
+
 # MULTIPLEXER:
+
+![image](https://github.com/navaneethans/VLSI-LAB-EXP-2/assets/6987778/427f75b2-8e67-44b9-ac45-a66651787436)
+
+# Verilog code:
 
 module Mux8_1(i,s,y);
 
@@ -122,8 +115,16 @@ end
 
 endmodule
 
+# Output:
+
+![mux8to1](https://github.com/Princyagnes/VLSI-LAB-EXP-2/assets/115100663/0b872cd4-6c2b-4b61-a8ad-3c293aee4c1c)
+
 
 # DEMULTIPLEXER:
+
+![image](https://github.com/navaneethans/VLSI-LAB-EXP-2/assets/6987778/1c45a7fc-08ac-4f76-87f2-c084e7150557)
+
+# Verilog code:
 
 module demux(d1,d2,d3,d4,d5,d6,d7,d8,i,s0,s1,s2);
 
@@ -157,8 +158,17 @@ and g11(d8,s0,s1,s2,i);
 
 endmodule
 
+# Output:
 
-# MAGNETIC COMPARATOR:
+![demux](https://github.com/Princyagnes/VLSI-LAB-EXP-2/assets/115100663/f166c999-b50b-4d6b-9a1c-77cd1bc26caa)
+
+
+# MAGNITUDE COMPARATOR:
+
+![image](https://github.com/navaneethans/VLSI-LAB-EXP-2/assets/6987778/b2fe7a05-6bf7-4dcb-8f5d-28abbf7ea8c2)
+
+
+# VERILOG CODE
 
 module Magcom(a,b,gt,it,eq);
 
@@ -211,29 +221,7 @@ end
 endmodule
 
 
-# OUTPUT WAVEFORM:
-
-# ENCODER:
-
-![encoder](https://github.com/Princyagnes/VLSI-LAB-EXP-2/assets/115100663/cc2d90ae-6133-4d50-b2d8-c25351d50051)
-
-
-# DECODER:
-
-![decoder3to8](https://github.com/Princyagnes/VLSI-LAB-EXP-2/assets/115100663/ff16c02e-6113-46c3-b6fe-5073675c5e3e)
-
-
-# MULTIPLEXER:
-
-![mux8to1](https://github.com/Princyagnes/VLSI-LAB-EXP-2/assets/115100663/0b872cd4-6c2b-4b61-a8ad-3c293aee4c1c)
-
-
-# DEMULTIPLEXER:
-
-![demux](https://github.com/Princyagnes/VLSI-LAB-EXP-2/assets/115100663/f166c999-b50b-4d6b-9a1c-77cd1bc26caa)
-
-
-# MAGNETIC COMPARATOR:
+# OUTPUT:
 
 ![magcom](https://github.com/Princyagnes/VLSI-LAB-EXP-2/assets/115100663/358bb62a-1aa6-488d-bcda-07192ac1d288)
 
